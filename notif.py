@@ -1,7 +1,7 @@
 import requests
 
 def send_webex_message(token, room_id, message):
-    api_url = "https://webexapis.com/v1/meetings"
+    api_url = "https://api.ciscospark.com/v1/messages"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
@@ -21,7 +21,7 @@ def send_webex_message(token, room_id, message):
 
 # Replace these values with your own
 access_token = "NzVkNGM1MzctYzc3My00NTMwLTk0NDQtYWEwOGI1NjE0ODVjMzUxYjkwMGEtMTBj_P0A1_d0b19fc5-a717-4064-90e2-8d88b3acad9c"
-webex_room_id = "webexteams://im?space=7be0e3a0-9dc8-11ee-8f9a-dd8e638e82f8"
+webex_room_id = "7be0e3a0-9dc8-11ee-8f9a-dd8e638e82f8"
 message_text = "Hello from Webex Teams!"
 
 # Call the function to send the message
