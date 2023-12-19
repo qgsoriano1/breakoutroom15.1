@@ -40,14 +40,14 @@ def change_hostname(host, port, username, password):
             netconf_edit = """
             <config>
                 <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-                    <hostname>cisco121</hostname>
+                    <hostname>cisco122</hostname>
                 </native>
             </config>
             """
 
             m.edit_config(target="running", config=netconf_edit)
 
-            print("Hostname changed to 'cisco121'")
+            print("Hostname changed to 'cisco122'")
 
     except Exception as e:
         print(f"An error occurred (change_hostname): {e}")
@@ -106,7 +106,7 @@ def add_loopback(port, username, password):
                 <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
                     <interface>
                         <Loopback>
-                            <name>3</name>
+                            <name>2</name>
                             <ip>
                                 <address>
                                     <primary>
@@ -156,7 +156,7 @@ def fetch_running_config2(port, username, password):
         print(f"An error occurred (fetch_running_config2): {e}")
 
 def send_webex_message(token, room_id, message):
-    api_url = "https://webexapis.com/v1/meetings"
+    api_url = "https://api.ciscospark.com/v1/messages"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
@@ -179,8 +179,8 @@ if __name__ == "__main__":
     port = 830
     username = "cisco"
     password = "cisco123!"
-    webex_token = "NzVkNGM1MzctYzc3My00NTMwLTk0NDQtYWEwOGI1NjE0ODVjMzUxYjkwMGEtMTBj_P0A1_d0b19fc5-a717-4064-90e2-8d88b3acad9c"
-    webex_room_id = "14723988dbb24b1ea7b0b774c0fe145d"
+    webex_token = "YmM3ZDRjMzEtYTExZi00YWJiLWI4ZTktNTg0YzY0ZTBkMTM1OTg4N2ZkOWEtOTU5_P0A1_d0b19fc5-a717-4064-90e2-8d88b3acad9c"
+    webex_room_id = "7be0e3a0-9dc8-11ee-8f9a-dd8e638e82f8"
 
     fetch_running_config1(host, port, username, password)
     change_hostname(host, port, username, password)
@@ -188,5 +188,5 @@ if __name__ == "__main__":
     add_loopback(port, username, password)
     fetch_running_config2(port, username, password)
     
-    message_text = "Changes have been made to the network configuration."
+    message_text = "Changes have been made to the network configuration. (Changes: Hostname, IPAdd, Loopback)"
     send_webex_message(webex_token, webex_room_id, message_text)
